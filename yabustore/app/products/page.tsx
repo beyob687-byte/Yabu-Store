@@ -1,19 +1,30 @@
 "use client";
-
+import useSWR from "swr"
 import { useState } from "react";
-import { products } from "@/lib/products";
-import ProductCard from "@/components/ProductCard";
+import {fetcher} from "@/data/fetcher"
+import ProductCard from "@/component/productCard";
 import "./products.css";
 
 export default function ProductsPage() {
+
+  const {data,isLoading,error}= useSWR("/api/product",fetcher)
   const [selectedCategory, setSelectedCategory] = useState("All");
+if(isLoading){
+  return <p>Loading.....</p>
+}
+if(error){
+  return <p>failed to fetche</p>
+}
+
+
+
 
   const categories = [
     "All",
-    ...new Set(products.map((product) => product.category)),
+    ...new Set(data.map((pro) => pro.category)),
   ];
 
-  const filteredProducts = products.filter(
+  const filteredProducts = data.filter(
     (product) =>
       selectedCategory === "All" ||
       product.category === selectedCategory
