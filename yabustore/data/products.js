@@ -1,4 +1,4 @@
-export const products = [
+ const products = [
   {
     id: 83,
     name: "Blue & Black Check Shirt",
@@ -270,3 +270,12 @@ export const products = [
     available: true
   }
 ];
+
+export async function product() {
+return products;
+}
+
+
+  export async function productid(id) {
+return product.find((d)=>d.id===Number(id));
+}
