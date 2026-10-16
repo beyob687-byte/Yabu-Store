@@ -277,5 +277,5 @@ return (products);
 
 
   export async function productid(id) {
-return product.find((d)=>d.id===Number(id));
+return products.find((d)=>d.id===Number(id));
 }
