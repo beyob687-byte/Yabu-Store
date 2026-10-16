@@ -17,10 +17,10 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<div className="site-shell">
+				<div className="flex min-h-screen flex-col">
 					<Header/>
 
-					<div className="site-content">{children}</div>
+					<div className="flex-1">{children}</div>
 
 					<Footer/>
 				</div>
