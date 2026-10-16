@@ -1,56 +1,55 @@
+
+"use client";
+
 import Link from "next/link";
-import NotFound from "./Not-Found";
-import { getProductById } from "@/lib/products";
-import AddToCartButton from "@/components/AddToCartButton";
+import useSWR from "swr";
+import { useParams } from "next/navigation";
+import { fetcher } from "@/data/fetcher";
 import "../products.css";
 
-type ProductDetailPageProps = {
-  params: Promise<{ id: string }>;
-};
+export default function ProductDetailPage() {
+  const params = useParams<{ id: string }>();
+  const id = Number(params.id);
 
-export default async function ProductDetailPage({
-  params,
-}: ProductDetailPageProps) {
-  const { id } = await params;
-  const product = getProductById(id);
+  const { data, isLoading, error } = useSWR(
+    `/api/product/${id}`,
+    fetcher
+  );
 
-  if (!product) {
-    NotFound();
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Failed to fetch product.</p>;
+  }
+
+  if (!data) {
+    return <p>Product not found.</p>;
   }
 
   return (
     <main className="product-detail-page">
-      <Link href="/products" className="product-back-link">
+      <Link href="/Products" className="product-back-link">
         ← Back to Products
       </Link>
 
       <div className="product-detail-layout">
         <img
-          src={product.image}
-          alt={product.name}
+          src={data.image}
+          alt={data.name}
           className="product-detail-image"
         />
 
         <section className="product-detail-info">
-          <p className="product-category">
-            {product.category}
-          </p>
-
-          <h1 className="product-detail-title">
-            {product.name}
-          </h1>
-
+          <p className="product-category">{data.category}</p>
+          <h1 className="product-detail-title">{data.name}</h1>
           <p className="product-detail-description">
-            {product.description}
+            {data.description}
           </p>
-
           <p className="product-detail-price">
-            {product.price.toLocaleString()} ETB
+            {data.price?.toLocaleString()} ETB
           </p>
-
-          <div className="product-detail-action">
-            <AddToCartButton productName={product.name} />
-          </div>
         </section>
       </div>
     </main>

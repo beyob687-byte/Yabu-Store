@@ -1,4 +1,4 @@
-
+import Link from "next/link"
 export default function ProductCard({ product }) {
   return (
     <div>
@@ -18,6 +18,10 @@ export default function ProductCard({ product }) {
         <h4>
           {product.available ? "It's Available" : "Out of Product"}
         </h4>
+
+      </div>
+      <div>
+       <Link href={`/Products/${product.id}`}>Detail</Link>
       </div>
     </div>
   );
