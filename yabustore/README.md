@@ -1,8 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
+# Yabu-store 👕🛍️
+
+Welcome to **Yabu-store**, an online clothing shopping store built with [Next.js](https://nextjs.org). Our goal is to provide a simple and enjoyable shopping experience where customers can explore clothing collections and find styles they love.
 
 ## Getting Started
 
-First, run the development server:
+Follow these steps to run the project locally.
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- npm, yarn, pnpm, or bun
+
+### Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone <your-repository-url>
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd Yabu-store
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+### Run the Development Server
+
+Start the development server:
 
 ```bash
 npm run dev
@@ -14,23 +48,73 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view Yabu-store.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the application by modifying `app/page.tsx`. The page will automatically update as you make changes.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project Features
+
+Yabu-store is being developed as an online clothing shopping platform. Planned features include:
+
+- **Clothing Collections:** Browse clothing items and discover new styles.
+- **Product Details:** View product images, descriptions, prices, and available sizes.
+- **Shopping Cart:** Add, remove, and manage items before checkout.
+- **Product Categories:** Explore different clothing categories.
+- **Responsive Design:** Enjoy a smooth shopping experience on desktop, tablet, and mobile devices.
+- **Secure Checkout:** Support a secure and convenient checkout experience.
+
+## Technologies Used
+
+- [Next.js](https://nextjs.org/) — React framework for building the web application.
+- [React](https://react.dev/) — Library for building interactive user interfaces.
+- [TypeScript](https://www.typescriptlang.org/) — Type-safe JavaScript development.
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework for styling, if configured.
+
+## Project Structure
+
+The project uses the Next.js App Router.
+
+```text
+Yabu-store/
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── globals.css
+├── public/
+│   └── images/
+├── package.json
+├── next.config.ts
+└── README.md
+```
+
+*Note: The structure may vary depending on your project configuration.*
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Learn](https://nextjs.org/learn)
+- [React Documentation](https://react.dev/learn)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+The recommended way to deploy Yabu-store is using [Vercel](https://vercel.com/).
 
-## Deploy on Vercel
+For more details, see the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contributing
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Contributions, suggestions, and improvements are welcome.
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Submit a pull request.
+
+## License
+
+The license for this project has not yet been specified.
+
+---
+
+**Yabu-store — Find your style. Shop your way.** 🛍️
