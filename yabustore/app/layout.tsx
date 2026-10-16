@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Header from "@/component/Header";
+import Footer from "@/component/Footer";
 import Link from "next/link";
 import "./globals.css";
 
@@ -16,29 +18,11 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<div className="site-shell">
-					<header className="site-header">
-						<div className="header-content">
-							<Link href="/" className="brand">
-								Yabu Store
-							</Link>
-							<nav aria-label="Main navigation" className="main-nav">
-								<Link href="/" className="nav-link">
-									Home
-								</Link>
-								<Link href="/products" className="nav-link">
-									Products
-								</Link>
-							</nav>
-						</div>
-					</header>
+					<Header/>
 
 					<div className="site-content">{children}</div>
 
-					<footer className="site-footer">
-						<div className="footer-content">
-							Yabu Store
-						</div>
-					</footer>
+					<Footer/>
 				</div>
 			</body>
 		</html>
