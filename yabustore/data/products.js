@@ -272,7 +272,7 @@
 ];
 
 export async function product() {
-return products;
+return (products);
 }
 
 
