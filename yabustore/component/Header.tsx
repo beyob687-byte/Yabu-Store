@@ -15,7 +15,7 @@ export default function Header() {
                     <Link href="/product">Shop</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
-                    <Link href="/shop?category=new-arrivals">New Arrivals</Link>
+                    <Link href="/checkout">Checkout</Link>
                 </nav>
 
                 <div className="header-actions">

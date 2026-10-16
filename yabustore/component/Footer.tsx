@@ -31,31 +31,31 @@ export default function Footer() {
 
         <div className="footer-column">
           <h3>Shop</h3>
-          <Link href="/shop">All Products</Link>
-          <Link href="/shop?category=men">Men</Link>
-          <Link href="/shop?category=women">Women</Link>
-          <Link href="/shop?category=accessories">Accessories</Link>
+          <Link href="/product">All Products</Link>
+          <Link href="/product?category=men">Men</Link>
+          <Link href="/product?category=women">Women</Link>
+          <Link href="/product?category=accessories">Accessories</Link>
         </div>
 
         <div className="footer-column">
           <h3>Customer Care</h3>
           <Link href="/contact">Contact Us</Link>
-          <Link href="/shipping">Shipping & Delivery</Link>
-          <Link href="/returns">Returns & Exchanges</Link>
-          <Link href="/faq">FAQs</Link>
+          <Link href="/contact">Shipping & Delivery</Link>
+          <Link href="/contact">Returns & Exchanges</Link>
+          <Link href="/contact">FAQs</Link>
         </div>
 
         <div className="footer-column">
           <h3>About Us</h3>
           <Link href="/about">Our Story</Link>
-          <Link href="/privacy">Privacy Policy</Link>
-          <Link href="/terms">Terms & Conditions</Link>
+          <Link href="/about">Privacy Policy</Link>
+          <Link href="/about">Terms & Conditions</Link>
         </div>
       </div>
 
       <div className="footer-bottom">
         <p>
-          © {new Date().getFullYear()} Yabu-Store. All rights reserved.
+          &copy; 2026 Yabu-Store. All rights reserved.
         </p>
         <p>Made with care for your style.</p>
       </div>
