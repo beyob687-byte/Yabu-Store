@@ -1,6 +1,7 @@
 import Link from "next/link";
 import CartIcon from "./CartIcon";
 // import "./Header.css";
+import { fetcher } from "@/data/fetcher";
 
 export default function Header() {
   return (
@@ -13,9 +14,9 @@ export default function Header() {
         <nav className="main-nav">
           <Link href="/">Home</Link>
           <Link href="/products">Shop</Link>
-          <Link href="/about">About</Link>
+          <Link href="/about">Our Story</Link>
           <Link href="/contact">Contact</Link>
-          <Link href="/checkout">Checkout</Link>
+          {/* <Link href="/checkout">Checkout</Link> */}
         </nav>
 
         <div className="header-actions">
