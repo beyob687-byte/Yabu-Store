@@ -1,4 +1,4 @@
- const products = [
+const products = [
   {
     id: 83,
     name: "Blue & Black Check Shirt",
@@ -15,7 +15,7 @@
     category: "mens-shirts",
     image: "https://cdn.dummyjson.com/product-images/mens-shirts/gigabyte-aorus-men-tshirt/thumbnail.webp",
     description: "A casual gaming T-shirt featuring the Aorus logo and a sleek design.",
-    available: true
+    available: false
   },
   {
     id: 85,
@@ -78,7 +78,7 @@
     category: "mens-shoes",
     image: "https://cdn.dummyjson.com/product-images/mens-shoes/sports-sneakers-off-white-&-red/thumbnail.webp",
     description: "Sporty sneakers combining off-white and red colors for a bold look.",
-    available: true
+    available: false
   },
   {
     id: 92,
@@ -272,10 +272,10 @@
 ];
 
 export async function product() {
-return (products);
+  return (products);
 }
 
 
-  export async function productid(id) {
-return products.find((d)=>d.id===Number(id));
+export async function productid(id) {
+  return products.find((d) => d.id === Number(id));
 }

@@ -1,27 +1,51 @@
+
 "use client";
-import useSWR from "swr"
+
 import { useState } from "react";
-import {fetcher} from "@/data/fetcher"
+import useSWR from "swr";
+
+import { fetcher } from "@/data/fetcher";
 import ProductCard from "@/component/productCard";
+
 import "./products.css";
 
 export default function ProductsPage() {
+  const { data, isLoading, error } = useSWR(
+    "/api/product",
+    fetcher
+  );
 
-  const {data,isLoading,error}= useSWR("/api/product",fetcher)
   const [selectedCategory, setSelectedCategory] = useState("All");
-if(isLoading){
-  return <p>Loading.....</p>
-}
-if(error){
-  return <p>failed to fetche</p>
-}
 
+  if (isLoading) {
+    return (
+      <main className="products-page">
+        <p className="products-message">Loading products...</p>
+      </main>
+    );
+  }
 
+  if (error) {
+    return (
+      <main className="products-page">
+        <p className="products-message">
+          Failed to load products. Please try again.
+        </p>
+      </main>
+    );
+  }
 
+  if (!data) {
+    return (
+      <main className="products-page">
+        <p className="products-message">No products available.</p>
+      </main>
+    );
+  }
 
   const categories = [
     "All",
-    ...new Set(data.map((pro) => pro.category)),
+    ...new Set(data.map((product) => product.category)),
   ];
 
   const filteredProducts = data.filter(
@@ -32,40 +56,46 @@ if(error){
 
   return (
     <main className="products-page">
-      <h1 className="products-title">
-        Our Products
-      </h1>
+      {/* Page Heading */}
+      <section className="products-intro">
+        <p className="products-eyebrow">OUR COLLECTION</p>
 
-      <p className="products-description">
-        Discover your favorites, explore exciting products, and find something you'll love.
-      </p>
+        <h1 className="products-title">Our Products</h1>
+
+        <p className="products-description">
+          Discover your favorites, explore our collection,
+          and find something you'll love.
+        </p>
+      </section>
+
       {/* Category Filter */}
-      <div className="products-filter">
-        <label htmlFor="category">
-          Filter by category:
-        </label>
+      <section className="products-toolbar">
+        <div className="products-filter">
+          <label htmlFor="category">Category</label>
 
-        <select
-          id="category"
-          value={selectedCategory}
-          onChange={(event) =>
-            setSelectedCategory(event.target.value)
-          }
-          className="category-select"
-        >
-          {categories.map((category) => (
-            <option key={category} value={category}>
-              {category}
-            </option>
-          ))}
-        </select>
-      </div>
+          <select
+            id="category"
+            value={selectedCategory}
+            onChange={(event) =>
+              setSelectedCategory(event.target.value)
+            }
+            className="category-select"
+          >
+            {categories.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <p className="products-count">
-        {filteredProducts.length} products found
-      </p>
+        <p className="products-count">
+          Showing <strong>{filteredProducts.length}</strong>{" "}
+          {filteredProducts.length === 1 ? "product" : "products"}
+        </p>
+      </section>
 
-      {/* Catalogue Grid */}
+      {/* Products Grid */}
       {filteredProducts.length > 0 ? (
         <div className="products-grid">
           {filteredProducts.map((product) => (
@@ -76,9 +106,21 @@ if(error){
           ))}
         </div>
       ) : (
-        <p className="products-empty-state">
-          No products found in this category.
-        </p>
+        <div className="products-empty-state">
+          <h2>No products found</h2>
+
+          <p>
+            Try selecting another category to explore our products.
+          </p>
+
+          <button
+            type="button"
+            className="products-reset-button"
+            onClick={() => setSelectedCategory("All")}
+          >
+            View All Products
+          </button>
+        </div>
       )}
     </main>
   );
