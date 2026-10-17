@@ -12,7 +12,7 @@ export default function Header() {
 
                 <nav className="main-nav">
                     <Link href="/">Home</Link>
-                    <Link href="/Products">Shop</Link>
+                    <Link href="/products">Shop</Link>
                     <Link href="/about">About</Link>
                     <Link href="/contact">Contact</Link>
                     <Link href="/checkout">Checkout</Link>
