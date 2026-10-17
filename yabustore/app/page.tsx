@@ -15,7 +15,7 @@ export default function HomePage() {
       Find your next favorite look with Yabu-Store.
     </p>
 
-    <Link href="/product" className="primary-link">
+    <Link href="/products" className="primary-link">
       Explore Our Collection
     </Link>
   </section>
