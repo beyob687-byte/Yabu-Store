@@ -387,6 +387,31 @@ img {
   font-size: 12px;
 }
 
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-count-badge {
+  position: absolute;
+  top: -7px;
+  right: -9px;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  background: #b58a50;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
 /* Wide Screens */
 
 @media (max-width: 900px) {
