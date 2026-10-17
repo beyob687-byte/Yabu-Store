@@ -1,111 +1,147 @@
+/* about.css */
 
 .about-page {
   color: #171717;
-  background: #ffffff;
+  background: #fff;
 }
 
 .about-page * {
   box-sizing: border-box;
 }
 
-.about-hero {
-  padding: 100px 20px 110px;
-  text-align: center;
-  background: #f7f5f0;
-}
+/* Shared labels */
 
 .about-label {
   margin: 0 0 20px;
   color: #a47b43;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 3px;
+  line-height: 1.6;
+}
+
+/* Hero */
+
+.about-hero {
+  padding: clamp(80px, 11vw, 145px) 20px;
+  text-align: center;
+  background: #f7f5f0;
 }
 
 .about-hero h1 {
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
-  font-size: clamp(38px, 6vw, 68px);
-  line-height: 1.12;
-  letter-spacing: -2px;
+  font-size: clamp(42px, 7vw, 78px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.055em;
 }
 
 .about-hero h1 span {
   color: #b58a50;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 .about-intro {
-  max-width: 570px;
-  margin: 25px auto 30px;
-  color: #666666;
-  font-size: 16px;
+  max-width: 550px;
+  margin: 28px auto 32px;
+  color: #686868;
+  font-size: 15px;
   line-height: 1.9;
 }
 
+/* Buttons */
+
 .about-button {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
   padding: 15px 28px;
+  border: 1px solid #171717;
   background: #171717;
-  color: #ffffff;
-  font-size: 13px;
+  color: #fff;
+  font-size: 12px;
   font-weight: 600;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .about-button:hover {
+  border-color: #b58a50;
   background: #b58a50;
+  color: #fff;
 }
 
+/* Story */
+
 .about-story {
-  max-width: 1200px;
+  width: min(1200px, 92%);
   margin: 0 auto;
-  padding: 100px 30px;
+  padding: clamp(70px, 10vw, 120px) 0;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
   align-items: center;
-  gap: 75px;
+  gap: clamp(40px, 7vw, 100px);
 }
 
 .story-content h2,
 .values-heading h2,
 .about-cta h2 {
   margin: 0 0 25px;
-  font-size: clamp(30px, 4vw, 43px);
-  line-height: 1.2;
-  letter-spacing: -1px;
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 500;
+  line-height: 1.18;
+  letter-spacing: -0.045em;
 }
 
 .story-content > p:not(.about-label) {
   margin: 0 0 18px;
-  color: #666666;
-  font-size: 15px;
-  line-height: 1.9;
+  color: #686868;
+  font-size: 14px;
+  line-height: 1.95;
 }
 
+/* Brand visual */
+
 .story-visual {
-  min-height: 380px;
+  position: relative;
+  min-height: 440px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #e9e1d5;
-  position: relative;
   overflow: hidden;
+  background: #e9e1d5;
 }
 
 .story-visual::before,
 .story-visual::after {
-  content: "";
   position: absolute;
-  width: 230px;
-  height: 230px;
-  border: 1px solid rgba(181, 138, 80, 0.45);
+  content: "";
+  width: 240px;
+  height: 240px;
+  border: 1px solid rgba(181, 138, 80, 0.55);
   border-radius: 50%;
+  transition: transform 0.5s ease;
 }
 
 .story-visual::after {
-  width: 290px;
-  height: 290px;
+  width: 310px;
+  height: 310px;
+}
+
+.story-visual:hover::before {
+  transform: scale(1.08);
+}
+
+.story-visual:hover::after {
+  transform: scale(1.04);
 }
 
 .story-visual-content {
@@ -115,25 +151,28 @@
 }
 
 .story-visual-content span {
-  font-size: clamp(55px, 8vw, 90px);
+  display: block;
+  font-size: clamp(58px, 8vw, 96px);
   font-weight: 800;
-  letter-spacing: -5px;
+  letter-spacing: -0.08em;
 }
 
 .story-visual-content p {
-  margin-top: 10px;
-  font-size: 10px;
+  margin: 12px 0 0;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 4px;
 }
 
+/* Values */
+
 .about-values {
-  padding: 85px 5%;
+  padding: clamp(70px, 9vw, 105px) 5%;
   background: #f7f5f0;
 }
 
 .values-heading {
-  margin-bottom: 45px;
+  margin-bottom: 48px;
   text-align: center;
 }
 
@@ -142,77 +181,130 @@
 }
 
 .values-grid {
-  max-width: 1200px;
+  width: min(1200px, 100%);
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 25px;
+  gap: 20px;
 }
 
 .value-card {
+  min-height: 225px;
   padding: 32px 28px;
-  background: #ffffff;
-  border: 1px solid #eeeeee;
+  border: 1px solid #e9e5de;
+  background: #fff;
+  transition:
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  border-color: #c7a675;
 }
 
 .value-number {
   color: #b58a50;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
+  letter-spacing: 0.1em;
 }
 
 .value-card h3 {
-  margin: 25px 0 12px;
-  font-size: 20px;
+  margin: 27px 0 12px;
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .value-card p {
   margin: 0;
-  color: #666666;
-  font-size: 14px;
-  line-height: 1.8;
+  color: #686868;
+  font-size: 13px;
+  line-height: 1.9;
 }
 
+/* Final call to action */
+
 .about-cta {
-  padding: 90px 20px;
+  padding: clamp(70px, 10vw, 110px) 20px;
   text-align: center;
 }
 
 .about-cta h2 {
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .about-cta > p:not(.about-label) {
-  margin: 0 auto 28px;
-  color: #666666;
-  font-size: 15px;
-  line-height: 1.8;
+  max-width: 480px;
+  margin: 0 auto 30px;
+  color: #686868;
+  font-size: 14px;
+  line-height: 1.9;
 }
+
+/* Responsive */
 
 @media (max-width: 768px) {
   .about-hero {
-    padding: 75px 20px;
+    padding: 78px 22px;
+  }
+
+  .about-hero h1 {
+    letter-spacing: -0.045em;
+  }
+
+  .about-intro {
+    font-size: 14px;
   }
 
   .about-story {
-    padding: 65px 22px;
+    width: 88%;
+    padding: 70px 0;
     grid-template-columns: 1fr;
-    gap: 35px;
+    gap: 32px;
   }
 
   .story-visual {
-    min-height: 300px;
+    min-height: 320px;
   }
 
   .values-grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .value-card {
+    min-height: auto;
+    padding: 28px 24px;
+  }
+
+  .value-card h3 {
+    margin-top: 20px;
   }
 
   .about-values {
-    padding: 65px 22px;
+    padding: 70px 6%;
+  }
+
+  .values-heading {
+    margin-bottom: 32px;
   }
 
   .about-cta {
-    padding: 65px 20px;
+    padding: 75px 22px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-button,
+  .story-visual::before,
+  .story-visual::after,
+  .value-card {
+    transition: none;
+  }
+
+  .value-card:hover {
+    transform: none;
   }
 }
