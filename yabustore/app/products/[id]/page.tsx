@@ -1,14 +1,17 @@
-
 "use client";
 
 import Link from "next/link";
 import useSWR from "swr";
 import { useParams } from "next/navigation";
 import { fetcher } from "@/data/fetcher";
+import { useCartStore } from "@/store/cartStore";
 import "../products.css";
 import "./product-details.css"
 
 export default function ProductDetailPage() {
+  const cartCount = useCartStore((state)=> state.cartCount)
+  const addToCart = useCartStore((state) => state.addToCart)
+
   const params = useParams<{ id: string }>();
   const id = Number(params.id);
 
@@ -51,6 +54,19 @@ export default function ProductDetailPage() {
           <p className="product-detail-price">
             {data.price?.toLocaleString()} ETB
           </p>
+          <button
+            className="add-to-cart-button"
+            onClick={() =>
+              addToCart({
+                id: data.id,
+                name: data.name,
+                price: data.price,
+              })
+            }
+          >
+            <span>Add to Cart</span>
+            <span aria-hidden="true">→</span>
+          </button>
         </section>
       </div>
     </main>
