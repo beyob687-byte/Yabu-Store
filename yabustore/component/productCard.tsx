@@ -20,7 +20,7 @@ export default function ProductCard({ product }: ProductsProps) {
   return (
     <article className="product-card">
       <Link
-        href={`/Products/${product.id}`}
+        href={`/products/${product.id}`}
         className="product-card-image-link"
       >
         <div className="product-card-image-wrapper">
@@ -59,7 +59,7 @@ export default function ProductCard({ product }: ProductsProps) {
           </p>
 
           <Link
-            href={`/Products/${product.id}`}
+            href={`/products/${product.id}`}
             className="product-card-detail-link"
           >
             View Details <span aria-hidden="true">→</span>

@@ -6,6 +6,7 @@ import useSWR from "swr";
 import { useParams } from "next/navigation";
 import { fetcher } from "@/data/fetcher";
 import "../products.css";
+import "./product-details.css"
 
 export default function ProductDetailPage() {
   const params = useParams<{ id: string }>();
@@ -30,7 +31,7 @@ export default function ProductDetailPage() {
 
   return (
     <main className="product-detail-page">
-      <Link href="/Products" className="product-back-link">
+      <Link href="/products" className="product-back-link">
         ← Back to Products
       </Link>
 
