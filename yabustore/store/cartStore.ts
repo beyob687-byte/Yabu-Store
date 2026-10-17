@@ -1,3 +1,4 @@
+
 import { create } from "zustand";
 
 type Product = {
@@ -9,53 +10,93 @@ type Product = {
 
 type CartStore = {
   cart: Product[];
-  addToCart: (product: Omit<Product, "quantity">) => void;
+  cartCount: number;
+
+  addToCart: (
+    product: Omit<Product, "quantity">,
+    quantity?: number
+  ) => void;
+
+  updateQuantity: (id: number, quantity: number) => void;
   removeFromCart: (id: number) => void;
   clearCart: () => void;
-  cartCount: number;
 };
+
+const getCartCount = (cart: Product[]) =>
+  cart.reduce((total, item) => total + item.quantity, 0);
 
 export const useCartStore = create<CartStore>((set) => ({
   cart: [],
   cartCount: 0,
 
-  addToCart: (product) =>
+  addToCart: (product, quantity = 1) => {
+    const amount = Math.floor(quantity);
+
+    if (!Number.isFinite(amount) || amount < 1) return;
+
     set((state) => {
       const existing = state.cart.find(
         (item) => item.id === product.id
       );
 
-      if (existing) {
-        return {
-          cart: state.cart.map((item) =>
+      const cart = existing
+        ? state.cart.map((item) =>
             item.id === product.id
-              ? { ...item, quantity: item.quantity + 1 }
+              ? { ...item, quantity: item.quantity + amount }
               : item
-          ),
-          cartCount: state.cartCount + 1,
-        };
-      }
+          )
+        : [...state.cart, { ...product, quantity: amount }];
 
       return {
-        cart: [...state.cart, { ...product, quantity: 1 }],
-        cartCount: state.cartCount + 1,
+        cart,
+        cartCount: getCartCount(cart),
       };
-    }),
+    });
+  },
+
+  updateQuantity: (id, quantity) => {
+    const amount = Math.floor(quantity);
+
+    if (!Number.isFinite(amount) || amount < 1) {
+      set((state) => {
+        const cart = state.cart.filter((item) => item.id !== id);
+
+        return {
+          cart,
+          cartCount: getCartCount(cart),
+        };
+      });
+
+      return;
+    }
+
+    set((state) => {
+      const cart = state.cart.map((item) =>
+        item.id === id
+          ? { ...item, quantity: amount }
+          : item
+      );
+
+      return {
+        cart,
+        cartCount: getCartCount(cart),
+      };
+    });
+  },
 
   removeFromCart: (id) =>
     set((state) => {
-      const existing = state.cart.find((item) => item.id === id);
-
-      if (!existing) return state;
+      const cart = state.cart.filter((item) => item.id !== id);
 
       return {
-        cart: state.cart.filter((item) => item.id !== id),
-        cartCount: state.cartCount - existing.quantity,
+        cart,
+        cartCount: getCartCount(cart),
       };
     }),
 
-  clearCart: () => ({
-    cart: [],
-    cartCount: 0,
-  }),
+  clearCart: () =>
+    set({
+      cart: [],
+      cartCount: 0,
+    }),
 }));
