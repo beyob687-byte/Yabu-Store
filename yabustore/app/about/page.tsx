@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import "./about.css";
 
@@ -18,7 +17,7 @@ export default function AboutPage() {
           and show the world who you are.
         </p>
 
-        <Link href="/Products" className="about-button">
+        <Link href="/" className="about-button">
           Explore Our Collection
         </Link>
       </section>
@@ -101,7 +100,7 @@ export default function AboutPage() {
           that feels right for you.
         </p>
 
-        <Link href="/Products" className="about-button">
+        <Link href="/products" className="about-button">
           Shop Now
         </Link>
       </section>
