@@ -18,7 +18,7 @@ export default function AboutPage() {
           and show the world who you are.
         </p>
 
-        <Link href="/product" className="about-button">
+        <Link href="/Products" className="about-button">
           Explore Our Collection
         </Link>
       </section>
@@ -101,7 +101,7 @@ export default function AboutPage() {
           that feels right for you.
         </p>
 
-        <Link href="/product" className="about-button">
+        <Link href="/Products" className="about-button">
           Shop Now
         </Link>
       </section>
