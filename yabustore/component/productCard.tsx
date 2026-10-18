@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -40,7 +39,7 @@ export default function ProductCard({ product }: ProductsProps) {
   return (
     <article className="product-card">
       <Link
-        href={`/products/${product.id}`}
+        href={`/Products/${product.id}`}
         className="product-card-image-link"
         aria-label={`View ${product.name}`}
       >
@@ -54,8 +53,9 @@ export default function ProductCard({ product }: ProductsProps) {
           />
 
           <span
-            className={`product-availability ${product.available ? "available" : "unavailable"
-              }`}
+            className={`product-availability ${
+              product.available ? "available" : "unavailable"
+            }`}
           >
             {product.available ? "In Stock" : "Out of Stock"}
           </span>
@@ -66,9 +66,7 @@ export default function ProductCard({ product }: ProductsProps) {
         <p className="product-card-category">{product.category}</p>
 
         <h2 className="product-card-title">
-          <Link href={`/products/${product.id}`}>
-            {product.name}
-          </Link>
+          <Link href={`/products/${product.id}`}>{product.name}</Link>
         </h2>
 
         <p className="product-card-price">
@@ -77,8 +75,7 @@ export default function ProductCard({ product }: ProductsProps) {
 
         <button
           type="button"
-          className={`product-card-add-button ${added ? "is-added" : ""
-            }`}
+          className={`product-card-add-button ${added ? "is-added" : ""}`}
           onClick={handleAddToCart}
           disabled={!product.available}
         >
@@ -96,7 +93,7 @@ export default function ProductCard({ product }: ProductsProps) {
         </button>
 
         <Link
-          href={`/products/${product.id}`}
+          href={`Products/${product.id}`}
           className="product-card-detail-link"
         >
           View Details <span aria-hidden="true">→</span>
