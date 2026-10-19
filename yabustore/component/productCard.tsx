@@ -93,7 +93,7 @@ export default function ProductCard({ product }: ProductsProps) {
         </button>
 
         <Link
-          href={`Products/${product.id}`}
+          href={`/products/${product.id}`}
           className="product-card-detail-link"
         >
           View Details <span aria-hidden="true">→</span>

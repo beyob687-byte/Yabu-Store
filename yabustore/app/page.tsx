@@ -1,19 +1,10 @@
 import ProductCard from "@/component/productCard";
+import { product } from "@/data/products";
 import Link from "next/link";
 
 export default async function HomePage() {
-  const res = await fetch("http://localhost:3000/api/product", {
-    next: { revalidate: 300 },
-  });
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
-  const data = await res.json();
-  const featuredProducts = Array.isArray(data)
-    ? data.slice(18, 21)
-    : [];
+  const data = await product();
+  const featuredProducts = data.slice(18, 21);
 
   return (
     <main className="home-page">
@@ -99,7 +90,7 @@ export default async function HomePage() {
         </div>
 
         <div className="product-grid">
-          {featuredProducts.map((item: { id: string | number }) => (
+          {featuredProducts.map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>

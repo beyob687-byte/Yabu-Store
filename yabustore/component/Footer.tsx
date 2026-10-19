@@ -55,7 +55,7 @@ export default function Footer() {
 
       <div className="footer-bottom">
         <p>
-          &copy; 2026 Yabu-Store. All rights reserved.
+          &copy; {new Date().getFullYear()} Yabu-Store. All rights reserved.
         </p>
         <p>Made with care for your style.</p>
       </div>

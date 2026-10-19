@@ -1,16 +1,23 @@
 
 "use client";
-import { Suspense } from "react";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import useSWR from "swr";
-import { useParams } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { fetcher } from "@/data/fetcher";
 import { useCartStore } from "@/store/cartStore";
 import "../products.css";
 import "./product-details.css";
 
 export default function ProductDetailPage() {
+  return (
+    <Suspense fallback={<p className="product-detail-message">Loading product...</p>}>
+      <ProductDetails />
+    </Suspense>
+  );
+}
+
+function ProductDetails() {
   const params = useParams<{ id: string }>();
   const id = Number(params.id);
 
@@ -29,6 +36,10 @@ export default function ProductDetailPage() {
   }
 
   if (error) {
+    if (error.status === 404) {
+      notFound();
+    }
+
     return (
       <p className="product-detail-message">
         Failed to fetch product. Please try again.
