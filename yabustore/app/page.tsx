@@ -1,16 +1,10 @@
 import ProductCard from "@/component/productCard";
 import Link from "next/link";
-
+import {product} from "@/data/products";
 export default async function HomePage() {
-  const res = await fetch("http://localhost:3000/api/product", {
-    next: { revalidate: 300 },
-  });
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch products");
-  }
-
-  const data = await res.json();
+  
+  const data = await product();
   const featuredProducts = Array.isArray(data)
     ? data.slice(18, 21)
     : [];
