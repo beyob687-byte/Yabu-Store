@@ -99,7 +99,7 @@ export default async function HomePage() {
         </div>
 
         <div className="product-grid">
-          {featuredProducts.map((item: { id: string | number }) => (
+          {featuredProducts.map((item) => (
             <ProductCard key={item.id} product={item} />
           ))}
         </div>
